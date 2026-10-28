@@ -1,0 +1,58 @@
+name: Website status
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-status
+  cancel-in-progress: true
+
+jobs:
+  check-live-site:
+    name: Check live pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check live pages return HTTP 200
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://pauzedevs.github.io/raynepodcastwebsite"
+          pages=(
+            "$base/"
+            "$base/podcast.html"
+            "$base/letters.html"
+            "$base/elsewhere.html"
+            "$base/404.html"
+          )
+          for url in "${pages[@]}"; do
+            echo "Checking $url"
+            code="$(curl --location --silent --show-error --output /tmp/page.html --write-out '%{http_code}' --max-time 25 "$url")"
+            if [[ "$code" != "200" ]]; then
+              echo "::error::Expected HTTP 200 for $url, received $code"
+              exit 1
+            fi
+            if [[ ! -s /tmp/page.html ]]; then
+              echo "::error::Empty response body for $url"
+              exit 1
+            fi
+            echo "HTTP $code — response body is non-empty"
+          done
+      - name: Check homepage identifies Morning Rayne
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --location --fail --silent --show-error --max-time 25 \
+            "https://pauzedevs.github.io/raynepodcastwebsite/" -o /tmp/home.html
+          if ! grep -qi "Morning Rayne" /tmp/home.html; then
+            echo "::error::Homepage response did not contain 'Morning Rayne'"
+            exit 1
+          fi
+          echo "Homepage content check passed."
