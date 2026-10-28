@@ -40,7 +40,7 @@ h1 em{color:var(--blue)}
 footer{border-top:1px solid var(--line);padding:22px 0;display:flex;justify-content:space-between;gap:14px;color:var(--muted);font-size:11px}
 .reveal{opacity:0;transform:translate3d(0,20px,0);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
 .reveal.is-visible{opacity:1;transform:translate3d(0,0,0)}
-@media(max-width:650px){.navlinks{gap:10px;font-size:10px}.wordmark{font-size:28px}.hero{margin-top:45px}.section-top{align-items:start;flex-direction:column;gap:10px}.player-shell{padding:6px}.player-shell iframe{height:286px}.platforms{grid-template-columns:1fr;margin-bottom:50px}.platform{min-height:82px}footer{flex-direction:column}}
+@media(max-width:650px){.navlinks{gap:10px;font-size:10px}.wordmark{font-size:28px}.hero{margin-top:45px}.section-top{align-items:start;flex-direction:column;gap:10px}.player-shell{padding:6px}.player-shell iframe{height:235px}.platforms{grid-template-columns:1fr;margin-bottom:50px}.platform{min-height:82px}footer{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.reveal.is-visible{opacity:1;transform:none;transition:none}}
 
 /* Responsive layout pass: small phones, tablets, laptops and wide displays */
@@ -77,7 +77,7 @@ nav{min-width:0;flex-wrap:wrap}
   .platforms{grid-template-columns:1fr;margin-bottom:46px}
   .platform{min-height:78px;padding:17px}
   .player-shell{padding:5px}
-  .player-shell iframe{height:286px}
+  .player-shell iframe{height:235px}
   footer{flex-wrap:wrap;padding-top:20px;gap:12px}
 }
 @media (max-width:420px){
@@ -89,7 +89,7 @@ nav{min-width:0;flex-wrap:wrap}
   h1{font-size:clamp(42px,12vw,56px)}
   .live-label{white-space:normal;line-height:1.5}
   .section-top{min-width:0}
-  .player-shell iframe{height:286px}
+  .player-shell iframe{height:235px}
   .actions{gap:9px}
   .pill{padding:12px 14px;font-size:12px}
   .weather-picker{gap:7px}
@@ -105,9 +105,9 @@ nav{min-width:0;flex-wrap:wrap}
 .navlinks a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
 
 /* Compact Spotify embed: avoid unused dark space below the show card. */
-.player-shell iframe{height:286px}
-@media(max-width:650px){.player-shell iframe{height:286px}}
-@media(max-width:420px){.player-shell iframe{height:286px}}
+.player-shell iframe{height:235px}
+@media(max-width:650px){.player-shell iframe{height:235px}}
+@media(max-width:420px){.player-shell iframe{height:235px}}
 
 
 
