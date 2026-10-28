@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#dcecf7">
-<meta name="description" content="The latest Morning Rayne episodes, on Spotify, Apple Podcasts, YouTube and TikTok.">
+
 <link rel="icon" type="image/svg+xml" href="logo.svg">
-<title>Episodes · Morning Rayne</title>
+<title>Episodes — Morning Rayne Podcast</title>
+<meta name="description" content="Listen to Morning Rayne episodes on Spotify, Apple Podcasts and YouTube, and follow the show on TikTok."><link rel="canonical" href="https://pauzedevs.github.io/raynepodcastwebsite/podcast.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Morning Rayne"><meta property="og:title" content="Episodes — Morning Rayne Podcast"><meta property="og:description" content="Listen to Morning Rayne episodes on Spotify, Apple Podcasts and YouTube, and follow the show on TikTok."><meta property="og:url" content="https://pauzedevs.github.io/raynepodcastwebsite/podcast.html"><meta property="og:image" content="https://pauzedevs.github.io/raynepodcastwebsite/logo.svg"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Episodes — Morning Rayne Podcast"><meta name="twitter:description" content="Listen to Morning Rayne episodes on Spotify, Apple Podcasts and YouTube, and follow the show on TikTok.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Lobster&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
-:root{--ink:#233c50;--muted:#5f7c91;--paper:#f8f7f1;--line:rgba(35,60,80,.2);--blue:#527b9a;--mist:#e1eef6}
+:root{--ink:#233c50;--muted:#526b7d;--paper:#f8f7f1;--line:rgba(35,60,80,.2);--blue:#527b9a;--mist:#e1eef6}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:18px}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif}
@@ -99,15 +100,19 @@ nav{min-width:0;flex-wrap:wrap}
   .card:hover,.platform:hover,.link:hover,.pill:hover,.weather-choice:hover{transform:none}
 }
 
+.skip-link{position:absolute;left:12px;top:12px;z-index:1000;padding:12px 16px;background:var(--ink);color:#fff;border-radius:6px;transform:translateY(-160%);transition:transform .15s}.skip-link:focus{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.skip-link{transition:none}}
+.navlinks a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div class="wrap">
 <nav aria-label="Main navigation">
 <a class="wordmark" href="index.html"><span>Morning</span> <em>Rayne</em></a>
 <div class="navlinks"><a href="podcast.html" aria-current="page">podcast</a><a href="letters.html">letters</a><a href="elsewhere.html">elsewhere</a></div>
 </nav>
-<main>
+<main id="main-content">
 <section class="hero reveal">
 <div class="eyebrow">morning rayne / episodes</div>
 <h1>Press<br><em>play.</em></h1>
