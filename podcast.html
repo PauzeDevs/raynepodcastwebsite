@@ -41,6 +41,64 @@ footer{border-top:1px solid var(--line);padding:22px 0;display:flex;justify-cont
 .reveal.is-visible{opacity:1;transform:translate3d(0,0,0)}
 @media(max-width:650px){.navlinks{gap:10px;font-size:10px}.wordmark{font-size:28px}.hero{margin-top:45px}.section-top{align-items:start;flex-direction:column;gap:10px}.player-shell{padding:6px}.player-shell iframe{height:352px}.platforms{grid-template-columns:1fr;margin-bottom:50px}.platform{min-height:82px}footer{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.reveal.is-visible{opacity:1;transform:none;transition:none}}
+
+/* Responsive layout pass: small phones, tablets, laptops and wide displays */
+img,video,iframe{max-width:100%}
+body{min-width:0}
+a,button{-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:3px solid #6d9fc1;outline-offset:4px}
+p,h1,h2,h3{overflow-wrap:break-word}
+nav{min-width:0;flex-wrap:wrap}
+.navlinks{flex-wrap:wrap;align-items:center}
+@media (min-width:1200px){
+  .wrap{max-width:1180px}
+  .sky{padding-left:max(6vw,calc((100vw - 1180px)/2));padding-right:max(6vw,calc((100vw - 1180px)/2))}
+}
+@media (max-width:900px){
+  .hero{gap:24px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .destinations-head{align-items:flex-start}
+  .destinations-head p{max-width:320px}
+  .platforms{gap:10px}
+}
+@media (max-width:650px){
+  .wrap{padding:20px clamp(16px,5vw,26px)}
+  nav{align-items:center;row-gap:14px}
+  .navlinks{justify-content:flex-end;gap:10px 14px;font-size:10px;letter-spacing:.06em}
+  .hero{margin-top:clamp(38px,7vh,56px);padding:clamp(22px,6vw,32px)}
+  h1{font-size:clamp(44px,12vw,70px);line-height:.98;letter-spacing:-.055em}
+  .lead,.intro{font-size:14px;line-height:1.75}
+  .links{grid-template-columns:1fr;margin-bottom:54px}
+  .links .link{min-width:0}
+  .destinations{padding:60px 16px 64px}
+  .cards{grid-template-columns:1fr}
+  .card{min-height:150px;padding:20px}
+  .platforms{grid-template-columns:1fr;margin-bottom:46px}
+  .platform{min-height:78px;padding:17px}
+  .player-shell{padding:5px}
+  .player-shell iframe{height:352px}
+  footer{flex-wrap:wrap;padding-top:20px;gap:12px}
+}
+@media (max-width:420px){
+  .wrap{padding-left:15px;padding-right:15px}
+  nav{align-items:flex-start}
+  .wordmark{font-size:26px;gap:5px}
+  .navlinks{width:100%;justify-content:flex-start;padding-top:2px}
+  .hero{padding:21px 18px}
+  h1{font-size:clamp(42px,12vw,56px)}
+  .live-label{white-space:normal;line-height:1.5}
+  .section-top{min-width:0}
+  .player-shell iframe{height:330px}
+  .actions{gap:9px}
+  .pill{padding:12px 14px;font-size:12px}
+  .weather-picker{gap:7px}
+  .weather-choice{padding:8px 10px}
+  .ticker{font-size:10px}
+}
+@media (hover:none){
+  .card:hover,.platform:hover,.link:hover,.pill:hover,.weather-choice:hover{transform:none}
+}
+
 </style>
 </head>
 <body>
