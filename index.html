@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#dcecf7">
+  <meta name="description" content="Morning Rayne — podcast, episodes, writing and socials.">
+  <title>Morning Rayne</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+    :root{--sky:#dcecf7;--sky2:#c6dfef;--ink:#233c50;--muted:#617b8e;--paper:#f8f7f1;--line:rgba(35,60,80,.16);--blue:#476b88}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button,a{-webkit-tap-highlight-color:transparent}
+    .rain-layer{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden;opacity:.28}
+    .drop{position:absolute;top:-80px;width:1px;height:42px;background:linear-gradient(transparent,#648eaa);animation:rain linear infinite}
+    @keyframes rain{to{transform:translate3d(-55px,110vh,0)}}
+    .sky{position:relative;isolation:isolate;min-height:86vh;padding:24px clamp(22px,6vw,92px) 60px;background:linear-gradient(160deg,#eaf4fa 0%,#d5e9f6 48%,#bad5e8 100%);overflow:hidden}
+    .sky:before,.sky:after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(2px);pointer-events:none}
+    .sky:before{width:70vw;height:35vw;min-width:520px;min-height:280px;left:-16vw;top:16%;background:rgba(255,255,255,.52);box-shadow:80px 10px 45px rgba(255,255,255,.2);animation:drift 30s ease-in-out infinite alternate}
+    .sky:after{width:60vw;height:30vw;min-width:460px;min-height:250px;right:-16vw;bottom:-10%;background:rgba(255,255,255,.35);animation:drift 38s ease-in-out infinite alternate-reverse}
+    @keyframes drift{to{transform:translateX(6vw) translateY(-2vh)}}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:22px;position:relative;z-index:4}
+    .wordmark{font-family:'Playfair Display',serif;font-size:25px;letter-spacing:-1.2px}
+    .wordmark span{font-style:italic;color:#527b9a}
+    .navlinks{display:flex;gap:26px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#405e75}
+    .navlinks a{transition:opacity .2s}.navlinks a:hover{opacity:.55}
+    .hero{max-width:1120px;margin:clamp(70px,12vh,130px) auto 0;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;position:relative;z-index:2}
+    .eyebrow,.mono{font:11px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(58px,9vw,124px);letter-spacing:-.075em;line-height:.88;margin:22px 0 28px}
+    h1 em{font-weight:500;color:#527b9a}
+    .hero-note{max-width:330px;font-size:14px;line-height:1.8;color:#47647a}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(35,60,80,.35);padding:13px 17px;border-radius:99px;font-size:12px;transition:transform .2s,background .2s}
+    .pill:hover{transform:translateY(-2px);background:rgba(255,255,255,.42)}
+    .pill.primary{background:var(--ink);color:white;border-color:var(--ink)}
+    .pill.primary:hover{background:#385970}
+    .art{position:relative;min-height:360px;display:grid;place-items:center}
+    .orbit{position:absolute;width:min(36vw,390px);aspect-ratio:1;border:1px solid rgba(49,82,108,.22);border-radius:50%;animation:rotate 60s linear infinite}
+    .orbit:before,.orbit:after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 20px #fff}
+    .orbit:before{top:13%;left:17%}.orbit:after{right:9%;bottom:24%;width:5px;height:5px}
+    @keyframes rotate{to{transform:rotate(360deg)}}
+    .cloud-mark{position:relative;width:230px;height:150px;filter:drop-shadow(0 16px 18px rgba(62,105,139,.13));animation:float 6s ease-in-out infinite}
+    .cloud-mark .puff{position:absolute;background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.8)}
+    .p1{width:104px;height:78px;border-radius:50%;left:30px;top:33px}.p2{width:100px;height:100px;border-radius:50%;left:77px;top:8px}.p3{width:90px;height:72px;border-radius:50%;left:125px;top:39px}.p4{width:155px;height:54px;border-radius:50%;left:42px;top:68px}
+    .rainline{position:absolute;top:119px;width:2px;height:27px;border-radius:4px;background:#77a6c7;transform:rotate(17deg);opacity:.8;animation:drip 1.8s ease-in-out infinite}
+    .r1{left:67px}.r2{left:103px;top:130px;animation-delay:.4s}.r3{left:142px;top:120px;animation-delay:.8s}.r4{left:174px;top:132px;animation-delay:.2s}
+    @keyframes drip{50%{transform:translateY(10px) rotate(17deg);opacity:.25}100%{transform:translateY(0) rotate(17deg);opacity:.8}}
+    @keyframes float{50%{transform:translateY(-10px)}}
+    .art-caption{position:absolute;bottom:0;right:4%;font:italic 13px 'Playfair Display',serif;color:#557790}
+    .ticker{background:var(--ink);color:#eaf4fa;display:flex;gap:28px;align-items:center;overflow:hidden;white-space:nowrap;padding:13px 0;font:10px 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
+    .ticker-track{display:flex;gap:28px;min-width:max-content;animation:scroll 32s linear infinite}
+    @keyframes scroll{to{transform:translateX(-50%)}}
+    section.content{padding:100px clamp(22px,8vw,120px)}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:34px}
+    h2{font:500 clamp(36px,5vw,64px)/1 'Playfair Display',serif;letter-spacing:-.055em;margin:10px 0 0}
+    .section-side{max-width:230px;color:var(--muted);font-size:12px;line-height:1.7}
+    .episodes{background:var(--paper)}
+    .episode-empty{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .episode-empty p{font:italic 22px 'Playfair Display',serif;margin:0}
+    .episode-empty small{font:10px 'DM Mono',monospace;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .letters{background:#e6f0f6;position:relative;overflow:hidden}
+    .letters:after{content:"";position:absolute;width:380px;height:380px;border:1px solid rgba(62,105,139,.14);border-radius:50%;right:-130px;top:-160px;box-shadow:0 0 0 36px rgba(255,255,255,.1),0 0 0 72px rgba(255,255,255,.1);pointer-events:none}
+    .letter-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:end;position:relative;z-index:1}
+    .letter-title{font:italic 500 clamp(42px,6vw,76px)/.98 'Playfair Display',serif;letter-spacing:-.06em;max-width:470px}
+    .letter-form{border-bottom:1px solid #8ba8bc;display:flex;gap:12px;padding:12px 0}
+    .letter-form input{min-width:0;flex:1;background:transparent;border:0;outline:0;font:14px 'DM Sans',sans-serif;color:var(--ink)}
+    .letter-form input::placeholder{color:#6f899b}
+    .letter-form button{background:var(--ink);color:white;border:0;border-radius:99px;padding:12px 17px;font:12px 'DM Sans',sans-serif;cursor:pointer}
+    .fineprint{font-size:10px;line-height:1.6;color:#627e92;margin-top:12px}
+    .socials{background:#f3f2eb}
+    .social-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .social-card{padding:24px 18px 24px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;font:clamp(20px,3vw,32px) 'Playfair Display',serif;border-right:1px solid var(--line)}
+    .social-card:not(:first-child){padding-left:20px}.social-card:last-child{border-right:0}
+    .social-card span{font:10px 'DM Mono',monospace;color:var(--muted)}
+    .social-card:hover{color:#648aa7}
+    footer{padding:26px clamp(22px,6vw,92px);display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted)}
+    footer .wordmark{font-size:20px;color:var(--ink)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:700px){
+      .sky{min-height:auto;padding-top:20px}.navlinks{gap:13px;font-size:10px}.wordmark{font-size:21px}
+      .hero{grid-template-columns:1fr;gap:10px;margin-top:78px}.hero-copy{position:relative;z-index:2}
+      h1{font-size:clamp(64px,16vw,100px)}.art{min-height:240px;margin-top:-5px}.orbit{width:260px}
+      .cloud-mark{transform:scale(.83)}.art-caption{right:4%;bottom:2px}
+      section.content{padding:72px 22px}.section-head{align-items:start;flex-direction:column}.section-side{max-width:320px}
+      .episode-empty{align-items:start;flex-direction:column}.letter-grid{grid-template-columns:1fr;gap:28px}.social-grid{grid-template-columns:1fr}
+      .social-card,.social-card:not(:first-child){padding:18px 0;border-right:0;border-bottom:1px solid var(--line)}
+      .social-card:last-child{border-bottom:0}footer{align-items:flex-start;flex-direction:column;gap:8px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.rain-layer{display:none}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="rain-layer" id="rain" aria-hidden="true"></div>
+  <header class="sky" id="home">
+    <nav aria-label="Main navigation">
+      <a class="wordmark" href="#home">morning <span>rayne</span></a>
+      <div class="navlinks">
+        <a href="#episodes">episodes</a>
+        <a href="#letters">letters</a>
+        <a href="#elsewhere">elsewhere ↗</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">a podcast by rayne</div>
+        <h1>morning<br><em>rayne.</em></h1>
+        <p class="hero-note"> </p>
+        <div class="actions">
+          <a class="pill primary" id="hero-listen" href="#episodes">Listen in <span aria-hidden="true">↗</span></a>
+          <a class="pill" href="#letters">Read her letters ↓</a>
+        </div>
+      </div>
+      <div class="art" aria-label="Animated cloud and rain illustration" role="img">
+        <div class="orbit"></div>
+        <div class="cloud-mark">
+          <i class="puff p1"></i><i class="puff p2"></i><i class="puff p3"></i><i class="puff p4"></i>
+          <i class="rainline r1"></i><i class="rainline r2"></i><i class="rainline r3"></i><i class="rainline r4"></i>
+        </div>
+        <div class="art-caption">a little weather, always.</div>
+      </div>
+    </div>
+  </header>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">
+    <span>morning rayne ✳</span><span>listen / watch / read</span><span>morning rayne ✳</span><span>listen / watch / read</span><span>morning rayne ✳</span><span>listen / watch / read</span>
+    <span>morning rayne ✳</span><span>listen / watch / read</span><span>morning rayne ✳</span><span>listen / watch / read</span><span>morning rayne ✳</span><span>listen / watch / read</span>
+  </div></div>
+  <main>
+    <section class="content episodes" id="episodes">
+      <div class="section-head reveal">
+        <div><div class="eyebrow">press play</div><h2>Episodes<span style="color:#7fa6c2">.</span></h2></div>
+        <div class="section-side">Find the show wherever you listen.</div>
+      </div>
+      <div class="episode-empty reveal" id="episode-row">
+        <div><small>the podcast</small><p>Pick up where you left off.</p></div>
+        <a class="pill" id="episode-link" href="#elsewhere">Find an episode ↗</a>
+      </div>
+    </section>
+    <section class="content letters" id="letters">
+      <div class="letter-grid">
+        <div class="reveal"><div class="eyebrow">from her to your inbox</div><div class="letter-title">Letters from<br>Morning Rayne.</div></div>
+        <div class="reveal">
+          <p style="font-size:13px;line-height:1.8;color:#526f84;margin:0 0 18px">Notes, new posts and whatever she feels like sharing.</p>
+          <a class="pill primary" id="substack-link" href="#letters">Read on Substack ↗</a>
+          <p class="fineprint">Opens her Substack publication. Subscribe there to receive new letters by email.</p>
+        </div>
+      </div>
+    </section>
+    <section class="content socials" id="elsewhere">
+      <div class="section-head reveal">
+        <div><div class="eyebrow">tabs she has open</div><h2>Elsewhere<span style="color:#7fa6c2">.</span></h2></div>
+        <div class="section-side">Follow along off this page.</div>
+      </div>
+      <div class="social-grid reveal" id="social-grid">
+        <a class="social-card" href="https://www.instagram.com/morningraynepod/" target="_blank" rel="noopener noreferrer">Instagram <span>↗</span></a>
+        <a class="social-card" id="youtube-link" href="#elsewhere">YouTube <span>↗</span></a>
+        <a class="social-card" id="podcast-link" href="#episodes">Podcast <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer><a class="wordmark" href="#home">morning <span>rayne</span></a><span>made for a slower scroll.</span><a href="#home">back to the clouds ↑</a></footer>
+  <script>
+    /*
+      Add Rayne's confirmed links here when available.
+      Keep blank until you have the real URL; the related button will stay hidden.
+    */
+    const LINKS = {
+      substack: "",
+      youtube: "",
+      podcast: ""
+    };
+    const setExternalLink = (id, url) => {
+      const el = document.getElementById(id);
+      if (!url || !/^https?:\/\//i.test(url)) { el.hidden = true; return; }
+      el.href = url;
+      el.target = "_blank";
+      el.rel = "noopener noreferrer";
+      el.hidden = false;
+    };
+    setExternalLink("substack-link", LINKS.substack);
+    setExternalLink("youtube-link", LINKS.youtube);
+    setExternalLink("podcast-link", LINKS.podcast);
+    const heroListen = document.getElementById("hero-listen");
+    const episodeLink = document.getElementById("episode-link");
+    if (LINKS.podcast && /^https?:\/\//i.test(LINKS.podcast)) {
+      heroListen.href = LINKS.podcast; heroListen.target = "_blank"; heroListen.rel = "noopener noreferrer";
+      episodeLink.href = LINKS.podcast; episodeLink.target = "_blank"; episodeLink.rel = "noopener noreferrer";
+    }
+    const rain = document.getElementById("rain");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      for (let i = 0; i < 42; i++) {
+        const drop = document.createElement("i");
+        drop.className = "drop";
+        drop.style.left = Math.random() * 100 + "%";
+        drop.style.animationDuration = (1.4 + Math.random() * 1.8) + "s";
+        drop.style.animationDelay = (-Math.random() * 4) + "s";
+        drop.style.opacity = (0.2 + Math.random() * 0.55).toFixed(2);
+        rain.appendChild(drop);
+      }
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
