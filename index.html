@@ -71,7 +71,7 @@
     .letter-form button{background:var(--ink);color:white;border:0;border-radius:99px;padding:12px 17px;font:12px 'DM Sans',sans-serif;cursor:pointer}
     .fineprint{font-size:10px;line-height:1.6;color:#627e92;margin-top:12px}
     .socials{background:#f3f2eb}
-    .social-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .social-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .social-card{padding:24px 18px 24px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;font:clamp(20px,3vw,32px) 'Playfair Display',serif;border-right:1px solid var(--line)}
     .social-card:not(:first-child){padding-left:20px}.social-card:last-child{border-right:0}
     .social-card span{font:10px 'DM Mono',monospace;color:var(--muted)}
@@ -155,9 +155,10 @@
         <div class="section-side">Follow along off this page.</div>
       </div>
       <div class="social-grid reveal" id="social-grid">
-        <a class="social-card" href="https://www.instagram.com/morningraynepod/" target="_blank" rel="noopener noreferrer">Instagram <span>↗</span></a>
+        <a class="social-card" id="instagram-link" href="https://www.instagram.com/morningraynepod/" target="_blank" rel="noopener noreferrer">Instagram <span>↗</span></a>
         <a class="social-card" id="youtube-link" href="#elsewhere">YouTube <span>↗</span></a>
-        <a class="social-card" id="podcast-link" href="#episodes">Podcast <span>↗</span></a>
+        <a class="social-card" id="apple-link" href="#episodes">Apple Podcasts <span>↗</span></a>
+        <a class="social-card" id="spotify-link" href="#episodes">Spotify <span>↗</span></a>
       </div>
     </section>
   </main>
@@ -168,9 +169,11 @@
       Keep blank until you have the real URL; the related button will stay hidden.
     */
     const LINKS = {
-      substack: "",
-      youtube: "",
-      podcast: ""
+      substack: "https://morningraynepodcast.substack.com/",
+      youtube: "https://youtube.com/@morningraynepodcast",
+      instagram: "https://www.instagram.com/morningraynepod/",
+      apple: "https://podcasts.apple.com/in/podcast/morning-rayne/id1794129842",
+      spotify: "https://open.spotify.com/show/4w31qDJqK02HmUwndqqI4p"
     };
     const setExternalLink = (id, url) => {
       const el = document.getElementById(id);
@@ -182,12 +185,14 @@
     };
     setExternalLink("substack-link", LINKS.substack);
     setExternalLink("youtube-link", LINKS.youtube);
-    setExternalLink("podcast-link", LINKS.podcast);
+    setExternalLink("instagram-link", LINKS.instagram);
+    setExternalLink("apple-link", LINKS.apple);
+    setExternalLink("spotify-link", LINKS.spotify);
     const heroListen = document.getElementById("hero-listen");
     const episodeLink = document.getElementById("episode-link");
-    if (LINKS.podcast && /^https?:\/\//i.test(LINKS.podcast)) {
-      heroListen.href = LINKS.podcast; heroListen.target = "_blank"; heroListen.rel = "noopener noreferrer";
-      episodeLink.href = LINKS.podcast; episodeLink.target = "_blank"; episodeLink.rel = "noopener noreferrer";
+    if (LINKS.spotify && /^https?:\/\//i.test(LINKS.spotify)) {
+      heroListen.href = LINKS.spotify; heroListen.target = "_blank"; heroListen.rel = "noopener noreferrer";
+      episodeLink.href = LINKS.spotify; episodeLink.target = "_blank"; episodeLink.rel = "noopener noreferrer";
     }
     const rain = document.getElementById("rain");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
